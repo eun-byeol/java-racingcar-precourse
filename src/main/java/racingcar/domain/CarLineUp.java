@@ -5,6 +5,7 @@ import static racingcar.utils.ErrorMessage.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class CarLineUp {
     private List<Car> players = new ArrayList<>();
@@ -23,5 +24,16 @@ public class CarLineUp {
         if (!Pattern.matches(pattern, carNames)) {
             throw new IllegalArgumentException(CAR_NAME_NOT_ENGLISH);
         }
+    }
+
+    public void racing() {
+        for (Car car : players) {
+            car.move();
+        }
+    }
+
+    public void printPlayers() {
+        this.players.stream()
+                .forEach(car -> System.out.println(car.toString()));
     }
 }
