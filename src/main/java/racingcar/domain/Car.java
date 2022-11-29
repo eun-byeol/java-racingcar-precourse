@@ -1,10 +1,12 @@
 package racingcar.domain;
 
+import static racingcar.utils.RandomNumber.*;
 import static racingcar.utils.ErrorMessage.*;
 
 public class Car {
     private final String name;
     private int position = 0;
+    private static final int MOVE_CONDITION = 4;
 
     public Car(String name) {
         validateSize(name);
@@ -15,5 +17,12 @@ public class Car {
         if (name.length() < 1 || name.length() > 5) {
             throw new IllegalArgumentException(CAR_NAME_SIZE_OUT_OF_RANGE);
         }
+    }
+
+    public void move() {
+        if (pickRandomNumber() < MOVE_CONDITION) {
+            return;
+        }
+        position++;
     }
 }
