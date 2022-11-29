@@ -1,11 +1,21 @@
 package racingcar.domain;
 
 import static racingcar.utils.ErrorMessage.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class RacingcarGame {
-    public void createLineUp(String cars){
+    private List<Car> players = new ArrayList<>();
+    private final String SEPARATOR = ",";
+
+    public RacingcarGame(String cars) {
         validateCarNames(cars);
+        String[] names = cars.split(SEPARATOR);
+        for (String name : names) {
+            players.add(new Car(name));
+        }
     }
 
     private void validateCarNames(String carNames){
@@ -14,6 +24,4 @@ public class RacingcarGame {
             throw new IllegalArgumentException(CAR_NAME_NOT_ENGLISH);
         }
     }
-
-
 }
