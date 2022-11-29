@@ -25,4 +25,13 @@ public class Car {
         }
         position++;
     }
+
+    @Override
+    public String toString() {
+        String movement = "";
+        for (int i = 0; i < position; i++) {
+            movement += "-";
+        }
+        return name + " : " + movement;
+    }
 }
