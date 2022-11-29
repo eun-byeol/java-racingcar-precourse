@@ -3,6 +3,8 @@ package racingcar.controller;
 import racingcar.domain.CarLineUp;
 import racingcar.domain.RacingCount;
 
+import static racingcar.view.OutputView.*;
+
 import static racingcar.view.InputView.*;
 
 public class Controller {
@@ -10,6 +12,9 @@ public class Controller {
     public void runGame() {
         CarLineUp carLineUp = inputCars();
         final RacingCount gameCount = inputGameCount();
+        printExecutionResult();
+        execution(carLineUp, gameCount);
+//        printWinner(carLineUp);
     }
 
     private CarLineUp inputCars() {
@@ -34,6 +39,12 @@ public class Controller {
         }
     }
 
+    private void execution(CarLineUp carLineUp, RacingCount gameCount) {
+        for (int i=0; i<gameCount.getCount(); i++) {
+            carLineUp.racing();
+            printRacingResult(carLineUp);
+        }
+    }
 }
 
 /*
