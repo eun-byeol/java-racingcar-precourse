@@ -34,4 +34,12 @@ public class Car {
         }
         return name + " : " + movement;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }
