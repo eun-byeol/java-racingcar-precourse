@@ -1,7 +1,12 @@
 package racingcar.controller;
 
+import racingcar.domain.Car;
 import racingcar.domain.CarLineUp;
 import racingcar.domain.RacingCount;
+import racingcar.domain.Winner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static racingcar.view.OutputView.*;
 
@@ -14,7 +19,8 @@ public class Controller {
         final RacingCount gameCount = inputGameCount();
         printExecutionResult();
         execution(carLineUp, gameCount);
-//        printWinner(carLineUp);
+        Winner winners = new Winner(carLineUp);
+        printWinnerResult(winners);
     }
 
     private CarLineUp inputCars() {
@@ -44,6 +50,10 @@ public class Controller {
             carLineUp.racing();
             printRacingResult(carLineUp);
         }
+    }
+
+    private void printWinnerResult(Winner winners) {
+        printWinner(winners);
     }
 }
 
