@@ -7,9 +7,7 @@ public class Winner {
     private final List<Car> winners;
 
     public Winner(CarLineUp cars) {
-        List<Car> winners = new ArrayList<>();
-        winners = decideWinner(cars);
-        this.winners = winners;
+        this.winners = decideWinner(cars);
     }
 
     public List<Car> decideWinner(CarLineUp cars) {
