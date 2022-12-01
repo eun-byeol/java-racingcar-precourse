@@ -5,5 +5,8 @@ public class ViewMessages {
     public static final String INPUT_RACING_COUNT = "시도할 회수는 몇회인가요?";
 
     public static final String OUTPUT_EXECUTION_RESULT = "\n실행 결과";
+    public static final String OUTPUT_PLAYER_NAME = "%s : ";
+    public static final String OUTPUT_MOVEMENT = "-";
+    public static final String OUTPUT_SEPARATOR = ", ";
     public static final String OUTPUT_WINNER = "최종 우승자 : %s";
 }
