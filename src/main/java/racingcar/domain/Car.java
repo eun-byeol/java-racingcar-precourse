@@ -1,12 +1,14 @@
 package racingcar.domain;
 
-import static racingcar.utils.RandomNumber.*;
 import static racingcar.utils.ErrorMessage.*;
+import static racingcar.utils.RandomNumber.pickRandomNumber;
 
 public class Car {
     private final String name;
     private int position = 0;
-    private static final int MOVE_CONDITION = 4;
+    private static final int MIN_LENGTH_OF_NAME = 1;
+    private static final int MAX_LENGTH_OF_NAME = 5;
+    private static final int CONDITION_OF_MOVE = 4;
 
     public Car(String name) {
         validateSize(name);
@@ -14,25 +16,20 @@ public class Car {
     }
 
     private void validateSize(String name) {
-        if (name.length() < 1 || name.length() > 5) {
+        if (name.length() < MIN_LENGTH_OF_NAME || name.length() > MAX_LENGTH_OF_NAME) {
             throw new IllegalArgumentException(CAR_NAME_SIZE_OUT_OF_RANGE);
         }
     }
 
-    public void move() {
-        if (pickRandomNumber() < MOVE_CONDITION) {
+    public void pickRandomNumAndMove() {
+        move(pickRandomNumber());
+    }
+
+    public void move(int number) {
+        if (number < CONDITION_OF_MOVE) {
             return;
         }
         position++;
-    }
-
-    @Override
-    public String toString() {
-        String movement = "";
-        for (int i = 0; i < position; i++) {
-            movement += "-";
-        }
-        return name + " : " + movement;
     }
 
     public String getName() {
