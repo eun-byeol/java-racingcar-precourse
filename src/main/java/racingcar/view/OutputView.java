@@ -12,7 +12,17 @@ public class OutputView {
         System.out.println(OUTPUT_EXECUTION_RESULT);
     }
     public static void printRacingResult(CarLineUp carLineUp) {
-        carLineUp.printPlayers();
+        for (Car car : carLineUp.getPlayers()) {
+            printPlayers(car);
+        }
+        System.out.println();
+    }
+
+    private static void printPlayers(Car car) {
+        System.out.printf(OUTPUT_PLAYER_NAME, car.getName());
+        for (int i = 0; i < car.getPosition(); i++) {
+            System.out.print(OUTPUT_MOVEMENT);
+        }
         System.out.println();
     }
 
@@ -21,7 +31,7 @@ public class OutputView {
         for (Car car : winner.getWinners()) {
             winners.add(car.getName());
         }
-        String result = String.join(", ", winners);
+        String result = String.join(OUTPUT_SEPARATOR, winners);
         System.out.printf(OUTPUT_WINNER, result);
     }
 }
