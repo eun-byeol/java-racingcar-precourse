@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import net.bytebuddy.pool.TypePool;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -10,11 +8,12 @@ public class Winner {
 
     public Winner(CarLineUp cars) {
         List<Car> winners = new ArrayList<>();
-        winners = decideWinner(cars, findMaxPosition(cars));
+        winners = decideWinner(cars);
         this.winners = winners;
     }
 
-    public List<Car> decideWinner(CarLineUp cars, Car carWithMaxPosition) {
+    public List<Car> decideWinner(CarLineUp cars) {
+        Car carWithMaxPosition = findMaxPosition(cars);
         return cars.getPlayers()
                 .stream()
                 .filter(car -> car.getPosition() == carWithMaxPosition.getPosition())
